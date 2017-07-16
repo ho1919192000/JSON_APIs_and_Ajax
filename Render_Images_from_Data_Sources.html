@@ -19,10 +19,10 @@
                                     var html = "";
                                     // Only change code below this line.
                                     json.forEach(function(val) {
-                                        var keys = Objects.keys(val);
+                                        var keys = Object.keys(val);
                                         html += "<div class = 'cat'>";
                                         keys.forEach(function(key) {
-                                            html += "<strong>" + val + "</strong>" + val[key] + "<br>"
+                                            html += "<strong>" + key + "</strong>" + val[key] + "<br>"
                                         })
                                         html += "</div><br>"
                                     })
