@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JSON APIs and Ajax</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <script>
+        /*$(document).ready(function() {
+
+                            $("#getMessage").on("click", function() {  
+                                $.getJSON("/json/cats.json", function(json) {
+
+                                    var html = "";
+                                    // Only change code below this line.
+                                    json.forEach(function(val) {
+                                        var keys = Objects.keys(val);
+                                        html += "<div class = 'cat'>";
+                                        keys.forEach(function(key) {
+                                            html += "<strong>" + val + "</strong>" + val[key] + "<br>"
+                                        })
+                                        html += "</div><br>"
+                                    })
+
+
+                                    // Only change code above this line.
+
+                                         $(".message").html(html);
+
+                                      
+                                });
+                            });
+                        });*/
+        var json = [{
+            "id": 0,
+            "imageLink": "https://s3.amazonaws.com/freecodecamp/funny-cat.jpg",
+            "altText": "A white cat wearing a green helmet shaped melon on it's head. ",
+            "codeNames": ["Juggernaut", "Mrs. Wallace", "Buttercup"]
+        }, {
+            "id": 1,
+            "imageLink": "https://s3.amazonaws.com/freecodecamp/grumpy-cat.jpg",
+            "altText": "A white cat with blue eys, looking very grumpy. ",
+            "codeNames": ["Oscar", "Scrooge", "Tyrion"]
+        }, {
+            "id": 2,
+            "imageLink": "https://s3.amazonaws.com/freecodecamp/mischievous-cat.jpg",
+            "altText": "A ginger cat with one eye closed and mouth in a grin-like expression. Looking very mischievous. ",
+            "codeNames": ["The Doctor", "Loki", "Joker"]
+        }];
+
+        $(document).ready(function() {
+
+            $("#getMessage").on("click", function() {  
+                var html = "";
+
+                json = json.filter(function(val) {//Let's filter out the cat whose "id" key has a value of 1.
+                    return val.id !== 1;
+                });
+                
+                json.forEach(function(val) {
+                    html += "<div class = 'cat'><img src='" + val.imageLink + "'alt='" + val.altText + "'></div>";
+                })
+
+                     $(".message").html(html);  
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <h2>Cat Photo Finder</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12 well message">
+                The message will go here
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <button id="getMessage" class="btn btn-primary">
+        Get Message
+      </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
